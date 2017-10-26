@@ -29,12 +29,12 @@
   "key":{
     "in": "query",
     "name": "key",
-    "type": "string"
+    "type": "apiKey"
   },
   "token":{
     "in": "query",
     "name": "token",
-    "type": "string"
+    "type": "apiKey"
   }
 },
    "basePath":"/1",
