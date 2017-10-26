@@ -3,6 +3,7 @@ schemes:
   - https
 host: trello.com
 basePath: /1
+x-exosite-health-path: /,
 x-hasEquivalentPaths: true
 info:
   contact:
