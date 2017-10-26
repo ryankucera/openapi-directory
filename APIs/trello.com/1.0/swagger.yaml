@@ -58,7 +58,7 @@
             }
          }
       },
-      "/cards":{
+      "/cards/{id}":{
          "get":{
             "operationId":"cards",
             "summary":"Get cards",
@@ -73,6 +73,13 @@
                }
             },
             "parameters":[
+               {
+                  "name":"id",
+                  "in":"path",
+                  "required":true,
+                  "description":"ID of card to retrieve.",
+                  "type":"string"
+               }
             ]
          }
       }
