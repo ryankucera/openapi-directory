@@ -23,7 +23,7 @@
     "type":"string",
     "required": true,
     "pattern": "^[0-9a-zA-Z]{64}$"
-  },
+  }
 ],
 "securityDefinitions":{
   "api_key":{
