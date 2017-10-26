@@ -11,14 +11,14 @@
    },
 "x-exosite-config-parameters" : [
   {
-    "name":"api_key", 
+    "name":"key", 
     "description":"API key provided by Trello",
     "type":"string",
     "required": true,
     "pattern": "^[0-9a-zA-Z]{32}$"
   },
   {
-    "name":"api_token", 
+    "name":"token", 
     "description":"API token provided by OAUTH sequence",
     "type":"string",
     "required": true,
@@ -26,12 +26,12 @@
   }
 ],
 "securityDefinitions":{
-  "api_key":{
+  "key":{
     "in": "query",
     "name": "key",
     "type": "apiKey"
   },
-  "api_token":{
+  "token":{
     "in": "query",
     "name": "token",
     "type": "apiKey"
