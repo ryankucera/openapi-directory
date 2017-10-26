@@ -58,7 +58,7 @@
             }
          }
       },
-      "/cards/{id}":{
+      "/cards/{id}?key={key}&token={token}":{
          "get":{
             "operationId":"cards",
             "summary":"Get cards",
@@ -78,6 +78,20 @@
                   "in":"path",
                   "required":true,
                   "description":"ID of card to retrieve.",
+                  "type":"string"
+               },
+               {
+                  "name":"key",
+                  "in":"path",
+                  "required":true,
+                  "description":"API key for user Auth.",
+                  "type":"string"
+               },
+               {
+                  "name":"token",
+                  "in":"path",
+                  "required":true,
+                  "description":"Auth token for user Auth.",
                   "type":"string"
                }
             ]
