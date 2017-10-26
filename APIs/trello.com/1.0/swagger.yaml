@@ -1,414 +1,73 @@
 {
-	"swagger": "2.0",
-	"schemes": [
-		"https"
-	],
-	"host": "trello.com",
-	"basePath": "/1",
-	"x-exosite-health-path": "/,",
-	"x-hasEquivalentPaths": true,
-	"info": {
-		"contact": {
-			"name": "Trello",
-			"url": "https://trello.com/home"
-		},
-		"description": "This document describes the REST API of Trello as published by Trello.com.\n - <a href='https://trello.com/docs/index.html' target='_blank'>Official Documentation</a>\n - <a href='https://trello.com/docs/api' target='_blank'>The HTML pages that were scraped in order to generate this specification.</a>",
-		"title": "Trello",
-		"version": "1.0",
-		"x-apisguru-categories": [
-			"collaboration"
-		],
-		"x-providerName": "trello.com",
-		"x-unofficialSpec": true
-	},
-	"externalDocs": {
-		"url": "https://developers.trello.com"
-	},
-	"securityDefinitions": {
-		"api_key": {
-			"in": "query",
-			"name": "key",
-			"type": "apiKey"
-		},
-		"api_token": {
-			"in": "query",
-			"name": "token",
-			"type": "apiKey"
-		}
-	},
-	"paths": {
-		"/cards": {
-			"post": {
-				"operationId": "addCards",
-				"parameters": [
-					{
-						"description": "Attributes of \"Cards\" to be added.",
-						"in": "body",
-						"name": "body",
-						"required": true,
-						"schema": {
-							"$ref": "#/definitions/cards"
-						}
-					},
-					{
-						"description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>",
-						"in": "query",
-						"name": "key",
-						"required": true,
-						"type": "string"
-					},
-					{
-						"description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>",
-						"in": "query",
-						"name": "token",
-						"required": true,
-						"type": "string"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Success"
-					},
-					"400": {
-						"description": "Server rejection"
-					}
-				},
-				"security": [
-					{
-						"api_key": []
-					},
-					{
-						"api_token": []
-					}
-				],
-				"summary": "addCards()",
-				"tags": [
-					"card"
-				]
-			}
-		},
-		"/cards/{idCard}": {
-			"delete": {
-				"operationId": "deleteCardsByIdCard",
-				"parameters": [
-					{
-						"description": "card id or shortlink",
-						"in": "path",
-						"name": "idCard",
-						"required": true,
-						"type": "string"
-					},
-					{
-						"description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>",
-						"in": "query",
-						"name": "key",
-						"required": true,
-						"type": "string"
-					},
-					{
-						"description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>",
-						"in": "query",
-						"name": "token",
-						"required": true,
-						"type": "string"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Success"
-					},
-					"400": {
-						"description": "Server rejection"
-					}
-				},
-				"security": [
-					{
-						"api_key": []
-					},
-					{
-						"api_token": []
-					}
-				],
-				"summary": "deleteCardsByIdCard()",
-				"tags": [
-					"card"
-				]
-			},
-			"get": {
-				"operationId": "getCardsByIdCard",
-				"parameters": [
-					{
-						"description": "card id or shortlink",
-						"in": "path",
-						"name": "idCard",
-						"required": true,
-						"type": "string"
-					},
-					{
-						"description": "all or a comma-separated list of: addAttachmentToCard, addChecklistToCard, addMemberToBoard, addMemberToCard, addMemberToOrganization, addToOrganizationBoard, commentCard, convertToCardFromCheckItem, copyBoard, copyCard, copyCommentCard, createBoard, createCard, createList, createOrganization, deleteAttachmentFromCard, deleteBoardInvitation, deleteCard, deleteOrganizationInvitation, disablePowerUp, emailCard, enablePowerUp, makeAdminOfBoard, makeNormalMemberOfBoard, makeNormalMemberOfOrganization, makeObserverOfBoard, memberJoinedTrello, moveCardFromBoard, moveCardToBoard, moveListFromBoard, moveListToBoard, removeChecklistFromCard, removeFromOrganizationBoard, removeMemberFromCard, unconfirmedBoardInvitation, unconfirmedOrganizationInvitation, updateBoard, updateCard, updateCard:closed, updateCard:desc, updateCard:idList, updateCard:name, updateCheckItemStateOnCard, updateChecklist, updateList, updateList:closed, updateList:name, updateMember or updateOrganization",
-						"in": "query",
-						"name": "actions",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"description": " true or false",
-						"in": "query",
-						"name": "actions_entities",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"description": " true or false",
-						"in": "query",
-						"name": "actions_display",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"default": "50",
-						"description": "a number from 0 to 1000",
-						"in": "query",
-						"name": "actions_limit",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"default": "all",
-						"description": "all or a comma-separated list of: data, date, idMemberCreator or type",
-						"in": "query",
-						"name": "action_fields",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"default": "avatarHash, fullName, initials and username",
-						"description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username",
-						"in": "query",
-						"name": "action_memberCreator_fields",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"description": "A boolean value or &quot;cover&quot; for only card cover attachments",
-						"in": "query",
-						"name": "attachments",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"default": "all",
-						"description": "all or a comma-separated list of: bytes, date, edgeColor, idMember, isUpload, mimeType, name, previews or url",
-						"in": "query",
-						"name": "attachment_fields",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"description": " true or false",
-						"in": "query",
-						"name": "members",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"default": "avatarHash, fullName, initials and username",
-						"description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username",
-						"in": "query",
-						"name": "member_fields",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"description": " true or false",
-						"in": "query",
-						"name": "membersVoted",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"default": "avatarHash, fullName, initials and username",
-						"description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username",
-						"in": "query",
-						"name": "memberVoted_fields",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"description": " true or false",
-						"in": "query",
-						"name": "checkItemStates",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"default": "all",
-						"description": "all or a comma-separated list of: idCheckItem or state",
-						"in": "query",
-						"name": "checkItemState_fields",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"default": "none",
-						"description": "One of: all or none",
-						"in": "query",
-						"name": "checklists",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"default": "all",
-						"description": "all or a comma-separated list of: idBoard, idCard, name or pos",
-						"in": "query",
-						"name": "checklist_fields",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"description": " true or false",
-						"in": "query",
-						"name": "board",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"default": "name, desc, descData, closed, idOrganization, pinned, url and prefs",
-						"description": "all or a comma-separated list of: closed, dateLastActivity, dateLastView, desc, descData, idOrganization, invitations, invited, labelNames, memberships, name, pinned, powerUps, prefs, shortLink, shortUrl, starred, subscribed or url",
-						"in": "query",
-						"name": "board_fields",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"description": " true or false",
-						"in": "query",
-						"name": "list",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"default": "all",
-						"description": "all or a comma-separated list of: closed, idBoard, name, pos or subscribed",
-						"in": "query",
-						"name": "list_fields",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"description": " true or false",
-						"in": "query",
-						"name": "stickers",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"default": "all",
-						"description": "all or a comma-separated list of: image, imageScaled, imageUrl, left, rotate, top or zIndex",
-						"in": "query",
-						"name": "sticker_fields",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"default": "badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idBoard, idChecklists, idLabels, idList, idMembers, idShort, idAttachmentCover, manualCoverAttachment, labels, name, pos, shortUrl and url",
-						"description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url",
-						"in": "query",
-						"name": "fields",
-						"required": false,
-						"type": "string"
-					},
-					{
-						"description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>",
-						"in": "query",
-						"name": "key",
-						"required": true,
-						"type": "string"
-					},
-					{
-						"description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>",
-						"in": "query",
-						"name": "token",
-						"required": true,
-						"type": "string"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Success"
-					},
-					"400": {
-						"description": "Server rejection"
-					}
-				},
-				"security": [
-					{
-						"api_key": []
-					},
-					{
-						"api_token": []
-					}
-				],
-				"summary": "getCardsByIdCard()",
-				"tags": [
-					"card"
-				]
-			},
-			"put": {
-				"operationId": "updateCardsByIdCard",
-				"parameters": [
-					{
-						"description": "card id or shortlink",
-						"in": "path",
-						"name": "idCard",
-						"required": true,
-						"type": "string"
-					},
-					{
-						"description": "Attributes of \"Cards\" to be updated.",
-						"in": "body",
-						"name": "body",
-						"required": true,
-						"schema": {
-							"$ref": "#/definitions/cards"
-						}
-					},
-					{
-						"description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>",
-						"in": "query",
-						"name": "key",
-						"required": true,
-						"type": "string"
-					},
-					{
-						"description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>",
-						"in": "query",
-						"name": "token",
-						"required": true,
-						"type": "string"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Success"
-					},
-					"400": {
-						"description": "Server rejection"
-					}
-				},
-				"security": [
-					{
-						"api_key": []
-					},
-					{
-						"api_token": []
-					}
-				],
-				"summary": "updateCardsByIdCard()",
-				"tags": [
-					"card"
-				]
-			}
-		}
-	}
+   "swagger":"2.0",
+   "info":{
+      "title":"Trello service example",
+      "description":"This is an example of a basic trello service with a single operation.",
+      "version":"v1",
+      "contact": {
+        "name": "Ryan Kucera",
+        "email": "ryankucera@exosite.com"
+      }
+   },
+"securityDefinitions":{
+  "api_key":{
+    "in": "query",
+    "name": "key",
+    "type": "apiKey"
+  },
+  "api_token":{
+    "in": "query",
+    "name": "token",
+    "type": "apiKey"
+  }
+}
+   "basePath":"/1",
+   "host":"tello.com",
+   "x-healthPath": "/",
+   "paths":{
+      "/":{
+         "get":{
+            "operationId":"gethealth",
+            "summary":"GET /health",
+            "x-internal-use":true,
+            "description":"The health check endpoint used by Pegasus to insure the service availability. This endpoint is defined in the swagger schema with the 'x-healthPath' tag.",
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "type":"object",
+                     "description":"Response content"
+                  }
+               }
+            }
+         }
+      },
+      "/cards":{
+         "get":{
+            "operationId":"cards",
+            "summary":"Get cards",
+            "description":"This Operation gets cards.",
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "type":"object",
+                     "description":"Response content"
+                  }
+               }
+            },
+            "parameters":[
+            ]
+         }
+      }
+   },
+   "consumes":[
+      "application/json"
+   ],
+   "produces":[
+      "application/json"
+   ],
+   "schemes":[
+      "https"
+   ]
 }
