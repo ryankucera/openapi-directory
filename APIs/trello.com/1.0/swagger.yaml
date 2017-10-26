@@ -20,9 +20,9 @@
     "name": "token",
     "type": "apiKey"
   }
-}
+},
    "basePath":"/1",
-   "host":"tello.com",
+   "host":"trello.com",
    "x-healthPath": "/",
    "paths":{
       "/":{
